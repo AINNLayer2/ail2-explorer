@@ -50,6 +50,7 @@ const UI = Object.freeze({
       textColor: getEnvValue('NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR') || 'white',
     },
     showAvgBlockTime: getEnvValue('NEXT_PUBLIC_HOMEPAGE_SHOW_AVG_BLOCK_TIME') === 'false' ? false : true,
+    txIcoin: getEnvValue('NEXT_PUBLIC_HOMEPAGE_TX_ICON'),
   },
   views,
   indexingAlert: {

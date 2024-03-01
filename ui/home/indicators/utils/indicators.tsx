@@ -47,7 +47,7 @@ const nativeTokenData = {
 const coinPriceIndicator: TChainIndicator<'stats_charts_market'> = {
   id: 'coin_price',
   title: `${ config.chain.governanceToken.symbol || config.chain.currency.symbol } price`,
-  value: (stats) => '$' + Number(stats.coin_price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 }),
+  value: (stats) => '$' + Number(stats.coin_price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
   icon: <TokenEntity.Icon token={ nativeTokenData } boxSize={ 6 } marginRight={ 0 }/>,
   hint: `${ config.chain.governanceToken.symbol || config.chain.currency.symbol } token daily price in USD.`,
   api: {
@@ -57,7 +57,7 @@ const coinPriceIndicator: TChainIndicator<'stats_charts_market'> = {
         .map((item) => ({ date: new Date(item.date), value: Number(item.closing_price) }))
         .sort(sortByDateDesc),
       name: `${ config.chain.governanceToken.symbol || config.chain.currency.symbol } price`,
-      valueFormatter: (x: number) => '$' + x.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 }),
+      valueFormatter: (x: number) => '$' + x.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
     } ]),
   },
 };

@@ -31,12 +31,12 @@ const Footer = () => {
   const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
   const issueUrl = useIssueUrl(backendVersionData?.backend_version);
   const BLOCKSCOUT_LINKS = [
-    {
-      icon: 'social/git' as const,
-      iconSize: '18px',
-      text: 'GitHub',
-      url: 'https://github.com/AINNLayer2',
-    },
+    // {
+    //   icon: 'social/git' as const,
+    //   iconSize: '18px',
+    //   text: 'GitHub',
+    //   url: 'https://github.com/AINNLayer2',
+    // },
     {
       icon: 'social/tweet' as const,
       iconSize: '18px',
@@ -104,9 +104,9 @@ const Footer = () => {
             </Text>
           ) }
         </VStack> */}
-        <Link fontSize="xs" href="https://ail2.io/">ail2.io</Link>
+        <Link fontSize="xs" href="https://anvm.io/">anvm.io</Link>
         <Text mt={ 3 } fontSize="xs">
-          Ail2 Scan is a Block Explorer and Analytics Platform for the Ail2 Network.
+          Anvm Scan is a Block Explorer and Analytics Platform for the Anvm Network.
         </Text>
       </Box>
     );
@@ -142,7 +142,7 @@ const Footer = () => {
         >
           {
             ([
-              { title: 'Ail2', links: BLOCKSCOUT_LINKS },
+              { title: 'Anvm', links: BLOCKSCOUT_LINKS },
               ...(linksData || []),
             ])
               .slice(0, colNum)

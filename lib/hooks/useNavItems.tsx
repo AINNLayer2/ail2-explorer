@@ -28,12 +28,12 @@ export default function useNavItems(): ReturnType {
   return React.useMemo(() => {
     let blockchainNavItems: Array<NavItem> | Array<Array<NavItem>> = [];
 
-    const topAccounts: NavItem | null = !config.UI.views.address.hiddenViews?.top_accounts ? {
-      text: 'Top accounts',
-      nextRoute: { pathname: '/accounts' as const },
-      icon: 'top-accounts',
-      isActive: pathname === '/accounts',
-    } : null;
+    // const topAccounts: NavItem | null = !config.UI.views.address.hiddenViews?.top_accounts ? {
+    //   text: 'Top accounts',
+    //   nextRoute: { pathname: '/accounts' as const },
+    //   icon: 'top-accounts',
+    //   isActive: pathname === '/accounts',
+    // } : null;
     const blocks: NavItem | null = {
       text: 'Blocks',
       nextRoute: { pathname: '/blocks' as const },
@@ -89,7 +89,7 @@ export default function useNavItems(): ReturnType {
           },
         ].filter(Boolean),
         [
-          topAccounts,
+          // topAccounts,
           validators,
           verifiedContracts,
           ensLookup,
@@ -113,7 +113,7 @@ export default function useNavItems(): ReturnType {
         ],
         [
           userOps,
-          topAccounts,
+          // topAccounts,
           validators,
           verifiedContracts,
           ensLookup,
@@ -131,7 +131,27 @@ export default function useNavItems(): ReturnType {
         [
           blocks,
           userOps,
-          topAccounts,
+          // topAccounts,
+          verifiedContracts,
+          ensLookup,
+        ].filter(Boolean),
+      ];
+    } else if (rollupFeature.isEnabled && rollupFeature.type === 'zkSync') {
+      blockchainNavItems = [
+        [
+          txs,
+          userOps,
+          blocks,
+          {
+            text: 'Txn batches',
+            nextRoute: { pathname: '/batches' as const },
+            icon: 'txn_batches',
+            isActive: pathname === '/batches' || pathname === '/batches/[number]',
+          },
+        ].filter(Boolean),
+        [
+          // topAccounts,
+          validators,
           verifiedContracts,
           ensLookup,
         ].filter(Boolean),
@@ -141,7 +161,7 @@ export default function useNavItems(): ReturnType {
         txs,
         userOps,
         blocks,
-        topAccounts,
+        // topAccounts,
         validators,
         verifiedContracts,
         ensLookup,

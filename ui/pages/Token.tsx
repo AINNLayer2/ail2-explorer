@@ -311,7 +311,7 @@ const TokenPageContent = () => {
         secondRow={ titleSecondRow }
       />
 
-      <TokenDetails tokenQuery={ tokenQuery } isBTC={ contractQuery.data?.hash === '0x80931F1fD3E542A819c91E1696c8662171eA4A5A' }/>
+      <TokenDetails tokenQuery={ tokenQuery } isBTC={ !contractQuery.data?.hash || contractQuery.data?.hash === '0x80931F1fD3E542A819c91E1696c8662171eA4A5A' }/>
 
       { /* should stay before tabs to scroll up with pagination */ }
       <Box ref={ scrollRef }></Box>

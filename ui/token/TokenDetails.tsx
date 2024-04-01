@@ -21,9 +21,10 @@ import TokenNftMarketplaces from './TokenNftMarketplaces';
 
 interface Props {
   tokenQuery: UseQueryResult<TokenInfo, ResourceError<unknown>>;
+  isBTC?: boolean;
 }
 
-const TokenDetails = ({ tokenQuery }: Props) => {
+const TokenDetails = ({ tokenQuery, isBTC }: Props) => {
   const router = useRouter();
   const hash = router.query.hash?.toString();
 
@@ -114,20 +115,22 @@ const TokenDetails = ({ tokenQuery }: Props) => {
           </Skeleton>
         </DetailsInfoItem>
       ) }
-      <DetailsInfoItem
-        title="Max total supply"
-        hint="The total amount of tokens issued"
-        alignSelf="center"
-        wordBreak="break-word"
-        whiteSpace="pre-wrap"
-        isLoading={ tokenQuery.isPlaceholderData }
-      >
-        <Skeleton isLoaded={ !tokenQuery.isPlaceholderData } w="100%" display="flex">
-          <TruncatedValue value={ totalSupplyValue || '0' } maxW="80%" flexShrink={ 0 }/>
-          <Box flexShrink={ 0 }> </Box>
-          <TruncatedValue value={ symbol || '' }/>
-        </Skeleton>
-      </DetailsInfoItem>
+      {
+        !isBTC && (
+          <DetailsInfoItem title="Max total supply"
+            hint="The total amount of tokens issued"
+            alignSelf="center"
+            wordBreak="break-word"
+            whiteSpace="pre-wrap"
+            isLoading={ tokenQuery.isPlaceholderData }
+          >
+            <Skeleton isLoaded={ !tokenQuery.isPlaceholderData } w="100%" display="flex">
+              <TruncatedValue value={ totalSupplyValue || '0' } maxW="80%" flexShrink={ 0 }/>
+              <Box flexShrink={ 0 }> </Box>
+              <TruncatedValue value={ symbol || '' }/>
+            </Skeleton>
+          </DetailsInfoItem>
+        ) }
       <DetailsInfoItem
         title="Holders"
         hint="Number of accounts holding the token"

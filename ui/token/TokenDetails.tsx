@@ -21,10 +21,9 @@ import TokenNftMarketplaces from './TokenNftMarketplaces';
 
 interface Props {
   tokenQuery: UseQueryResult<TokenInfo, ResourceError<unknown>>;
-  isBTC?: boolean;
 }
 
-const TokenDetails = ({ tokenQuery, isBTC }: Props) => {
+const TokenDetails = ({ tokenQuery }: Props) => {
   const router = useRouter();
   const hash = router.query.hash?.toString();
 
@@ -80,7 +79,10 @@ const TokenDetails = ({ tokenQuery, isBTC }: Props) => {
 
   if (type === 'ERC-20') {
     const totalValue = totalSupply ? getCurrencyValue({ value: totalSupply, accuracy: 3, accuracyUsd: 2, exchangeRate, decimals }) : undefined;
-    totalSupplyValue = totalValue?.valueStr;
+    const hash = tokenQuery.data?.address;
+    if (hash !== '0x80931F1fD3E542A819c91E1696c8662171eA4A5A') {
+      totalSupplyValue = totalValue?.valueStr;
+    }
   } else {
     totalSupplyValue = Number(totalSupply).toLocaleString();
   }
@@ -116,7 +118,7 @@ const TokenDetails = ({ tokenQuery, isBTC }: Props) => {
         </DetailsInfoItem>
       ) }
       {
-        !isBTC && (
+        totalSupplyValue && (
           <DetailsInfoItem title="Max total supply"
             hint="The total amount of tokens issued"
             alignSelf="center"

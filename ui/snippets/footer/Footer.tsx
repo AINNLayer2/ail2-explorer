@@ -41,7 +41,7 @@ const Footer = () => {
       icon: 'social/tweet' as const,
       iconSize: '18px',
       text: 'Twitter',
-      url: 'https://twitter.com/AINNLayer2',
+      url: 'https://twitter.com/AILayer_xyz',
     },
   ];
 
@@ -104,9 +104,9 @@ const Footer = () => {
             </Text>
           ) }
         </VStack> */}
-        <Link fontSize="xs" href="https://anvm.io/">anvm.io</Link>
+        <Link fontSize="xs" href="https://ailayer.xyz/">ailayer.xyz</Link>
         <Text mt={ 3 } fontSize="xs">
-          Anvm Scan is a Block Explorer and Analytics Platform for the Anvm Network.
+          AILayer Scan is a Block Explorer and Analytics Platform for the AILayer Network.
         </Text>
       </Box>
     );
